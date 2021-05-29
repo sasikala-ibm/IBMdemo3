@@ -21,8 +21,19 @@ pipeline {
     }
 
     stage('Stage 2') {
-      steps {
-        echo 'Hello, This is stage 2'
+      parallel {
+        stage('Stage 2') {
+          steps {
+            echo 'Hello, This is stage 2'
+          }
+        }
+
+        stage('') {
+          steps {
+            echo 'github in blueocean'
+          }
+        }
+
       }
     }
 
